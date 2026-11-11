@@ -1,0 +1,12 @@
+# Versões usadas para executar o notebook e gerar os resultados (Python 3.11).
+numpy==2.4.4
+pandas==3.0.2
+scipy==1.17.1
+scikit-learn==1.8.0
+xgboost==3.2.0
+matplotlib==3.10.9
+
+# Para abrir e reexecutar o notebook.
+ipykernel==7.2.0
+nbclient==0.10.4
+nbformat==5.10.4

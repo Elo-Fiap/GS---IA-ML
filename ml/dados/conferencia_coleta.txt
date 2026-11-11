@@ -1,0 +1,152 @@
+Conferência gerada em 2026-11-08T20:23:52-03:00
+Período esperado: 2023-01-01 a 2025-12-31
+
+=== Arquivos
+cge_alagamentos_2023_2025.csv: 2159 linhas, 0.25 MB
+cge_datas_coletadas.csv: 1096 linhas, 0.06 MB
+inmet_horario_sp_2023_2025.csv: 52608 linhas, 3.34 MB
+subprefeituras_geosampa.csv: 32 linhas, 0.00 MB
+mapa_nomes_cge_geosampa.csv: 32 linhas, 0.00 MB
+openmeteo_horario_subprefeituras_2023_2025.csv.gz: 841728 linhas, 3.42 MB
+openmeteo_previsao_d1_jma_horario_2023_2025.csv.gz: 841728 linhas, 2.31 MB
+cge_divergencias.csv: não existe (nenhuma divergência registrada)
+
+=== CGE: cobertura de datas
+Datas no período: 1096; coletadas: 1096; duplicadas: 0
+Faltando: []
+Fora do período: []
+situacao
+sem_registro    863
+com_registro    233
+
+=== CGE: validações internas por dia
+Dias em que n_registros != resumo lateral: 0
+Dias em que o CSV de registros difere de n_registros: 0
+
+=== CGE: registros e dias por ano
+      registros  dias_com_registro  dias_coletados
+ano                                               
+2023        822                 86             365
+2024        705                 68             366
+2025        632                 79             365
+Total de registros: 2159
+Total de dias com registro: 233
+
+=== CGE: status
+status_css
+inativo-intransitavel    1229
+inativo-transitavel       930
+transitavel
+0    1229
+1     930
+zona
+Zona Leste      697
+Zona Oeste      429
+Centro          339
+Zona Norte      305
+Zona Sul        241
+Zona Sudeste    148
+
+=== CGE: qualidade dos registros
+hora_inicio inválida ou vazia: 0
+hora_fim inválida ou vazia: 0
+hora_fim anterior a hora_inicio (pode virar o dia): 118
+      data subprefeitura_cge hora_inicio hora_fim                           local
+2023-01-15       Santo Amaro       17:23    00:19         AV ROQUE PETRONI JUNIOR
+2023-01-29       Santo Amaro       22:12    02:30            AV DAS NACOES UNIDAS
+2023-01-31                Sé       21:42    01:32               AV RANGEL PESTANA
+2023-02-16                Sé       22:31    04:06          R PRES BATISTA PEREIRA
+2023-02-18           Santana       17:20    06:00              AV CRUZEIRO DO SUL
+2023-02-18                Sé       17:16    06:44                  R PORTO SEGURO
+2023-02-18                Sé       17:18    06:44                  R PORTO SEGURO
+2023-02-18                Sé       17:35    06:00             R PAULINO GUIMARAES
+2023-02-18        São Mateus       21:44    00:00 AV JACU PESSEGO N TRABALHADORES
+2023-02-18     Vila Prudente       16:58    01:16                 PC ALBERTO LION
+Duplicados exatos: 4
+      data subprefeitura_cge hora_inicio                       local
+2024-02-18    Itaim Paulista       16:15            AV MARECHAL TITO
+2024-02-23    Itaim Paulista       16:25            AV MARECHAL TITO
+2024-03-17    Itaim Paulista       18:05            AV MARECHAL TITO
+2024-03-17    Itaim Paulista       18:10 RUA MANUEL BARBALHO DE LIMA
+Faltantes em registros: data=0.0%, zona=0.0%, subprefeitura_cge=0.0%, status_css=0.0%, transitavel=0.0%, hora_inicio=0.0%, hora_fim=0.0%, local=0.0%, sentido=0.0%, referencia=0.232%
+Faltantes em datas: data=0.0%, situacao=0.0%, n_registros=0.0%, resumo_transitaveis=0.0%, resumo_intransitaveis=0.0%, coletado_em=0.0%
+
+=== CGE: tipo de via (primeira palavra do local)
+local
+AV          1151
+R            598
+MARGINAL      90
+PC            75
+RUA           37
+ES            28
+NaN           27
+VEL           24
+CV            19
+VD            15
+PTE           14
+AL            14
+TN            13
+AV.           11
+TV             8
+Registros em avenidas (local começa com AV/AVENIDA): 1166 (54.0%)
+Registros em marginais (local começa com MARGINAL): 90 (4.2%)
+
+=== CGE: subprefeituras
+Registros sem subprefeitura mapeada: 0
+Top 5:
+subprefeitura
+SE             339
+ITAQUERA       179
+LAPA           171
+SANTO AMARO    163
+PINHEIROS      155
+Bottom 5:
+subprefeitura
+PARELHEIROS          6
+JABAQUARA            5
+CIDADE TIRADENTES    5
+CIDADE ADEMAR        5
+SAPOPEMBA            4
+Subprefeituras sem nenhum registro: []
+
+=== Comparação com o escopo do grupo
+Pontos: escopo 2137 | coletado 2159 | diferença 22
+Dias: escopo 1055 | no período 1096 | coletados 1096 | sem_registro confirmados 863
+Dias com alagamento por ano: escopo 68 a 82 | coletado {'2023': 86, '2024': 68, '2025': 79}
+Sé: escopo 335 | coletado 339
+Cidade Tiradentes: escopo 5 | coletado 5
+% em avenidas: escopo 53.0 | coletado 54.0
+
+=== INMET
+Intervalo local: 2023-01-01 00:00 a 2025-12-31 23:00
+Linhas por estação: {'A701': 26304, 'A771': 26304}
+% de faltantes de chuva por estação e ano:
+              pct_faltante  horas
+estacao ano                      
+A701    2023          7.36   8760
+        2024          0.23   8784
+        2025          0.54   8760
+A771    2023          1.96   8760
+        2024          0.10   8784
+        2025          0.33   8760
+Faltantes: estacao=0.0%, ts_utc=0.0%, ts_local=0.0%, chuva_mm=1.753%, temp_c=2.777%, umidade_pct=2.777%, pressao_hpa=0.922%, vento_ms=5.838%
+Chuva horária: mín 0.0, máx 82.0, soma por estação {'A701': 4725.0, 'A771': 4255.8}
+
+=== Subprefeituras
+Linhas: 32; faltantes: subprefeitura=0.0%, nome_exibicao=0.0%, sigla=0.0%, regiao5=0.0%, regiao8=0.0%, area_km2=0.0%, lat_centroide=0.0%, lon_centroide=0.0%, elevacao_m=0.0%
+Soma das áreas: 1522.7 km²
+Latitude: -23.890827 a -23.421114; longitude: -46.773602 a -46.399181
+Elevação (m): 737.0 a 846.0
+
+=== Open-Meteo: histórico (reanálise)
+Pontos de grade distintos: 19
+Subprefeituras por ponto de grade: {('-23.44464', '-46.561523'): 1, ('-23.44464', '-46.65616'): 2, ('-23.44464', '-46.750793'): 2, ('-23.514938', '-46.42105'): 3, ('-23.514938', '-46.515778'): 2, ('-23.514938', '-46.610504'): 3, ('-23.514938', '-46.70526'): 1, ('-23.585238', '-46.375153'): 1, ('-23.585238', '-46.46997'): 3, ('-23.585238', '-46.56482'): 2, ('-23.585238', '-46.659637'): 3, ('-23.585238', '-46.754486'): 1, ('-23.655537', '-46.613922'): 2, ('-23.655537', '-46.708862'): 1, ('-23.655537', '-46.803802'): 1, ('-23.725836', '-46.663147'): 1, ('-23.725836', '-46.75818'): 1, ('-23.796133', '-46.712494'): 1, ('-23.866432', '-46.666656'): 1}
+Intervalo: 2023-01-01 00:00 a 2025-12-31 23:00
+Linhas por subprefeitura: [26304]
+Faltantes: ts_local=0.0%, subprefeitura=0.0%, chuva_mm=0.0%, umidade_solo_0_7cm=0.0%, grid_lat=0.0%, grid_lon=0.0%
+
+=== Open-Meteo: previsão D-1
+Intervalo: 2023-01-01 00:00 a 2025-12-31 23:00
+Linhas por subprefeitura: [26304]
+Cobertura (% não nulo): 100.00%
+Cobertura por mês: {'2023-01': 100.0, '2023-02': 100.0, '2023-03': 100.0, '2023-04': 100.0, '2023-05': 100.0, '2023-06': 100.0, '2023-07': 100.0, '2023-08': 100.0, '2023-09': 100.0, '2023-10': 100.0, '2023-11': 100.0, '2023-12': 100.0, '2024-01': 100.0, '2024-02': 100.0, '2024-03': 100.0, '2024-04': 100.0, '2024-05': 100.0, '2024-06': 100.0, '2024-07': 100.0, '2024-08': 100.0, '2024-09': 100.0, '2024-10': 100.0, '2024-11': 100.0, '2024-12': 100.0, '2025-01': 100.0, '2025-02': 100.0, '2025-03': 100.0, '2025-04': 100.0, '2025-05': 100.0, '2025-06': 100.0, '2025-07': 100.0, '2025-08': 100.0, '2025-09': 100.0, '2025-10': 100.0, '2025-11': 100.0, '2025-12': 100.0}

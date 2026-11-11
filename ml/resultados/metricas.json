@@ -1,0 +1,887 @@
+{
+  "dados": {
+    "linhas_base": 35072,
+    "registros_cge": 2155,
+    "duplicatas_removidas": 4,
+    "dias_periodo": 1096,
+    "dias_com_alagamento_por_ano": {
+      "2023": 86,
+      "2024": 68,
+      "2025": 79
+    },
+    "prevalencia": 0.031478102189781025,
+    "pct_em_avenida": 0.5396751740139211,
+    "pct_pontos_menos_de_1h": 0.3948955916473318,
+    "pct_pontos_antes_8h": 0.17679814385150813,
+    "pontos_grade_previsao": 3,
+    "coerencia_fontes": [
+      {
+        "subprefeitura e estação": "SANTANA-TUCURUVI / A701",
+        "fonte": "Reanálise Open-Meteo",
+        "correlação com o INMET": 0.6821,
+        "total da fonte (mm)": 2496.5,
+        "total medido (mm)": 3203.2,
+        "dias de chuva forte em comum (%)": 26.9841
+      },
+      {
+        "subprefeitura e estação": "SANTANA-TUCURUVI / A701",
+        "fonte": "Previsão da véspera (JMA)",
+        "correlação com o INMET": 0.55,
+        "total da fonte (mm)": 2111.6,
+        "total medido (mm)": 3203.2,
+        "dias de chuva forte em comum (%)": 19.6721
+      },
+      {
+        "subprefeitura e estação": "CAPELA DO SOCORRO / A771",
+        "fonte": "Reanálise Open-Meteo",
+        "correlação com o INMET": 0.552,
+        "total da fonte (mm)": 2460.1,
+        "total medido (mm)": 3068.8,
+        "dias de chuva forte em comum (%)": 16.6667
+      },
+      {
+        "subprefeitura e estação": "CAPELA DO SOCORRO / A771",
+        "fonte": "Previsão da véspera (JMA)",
+        "correlação com o INMET": 0.3341,
+        "total da fonte (mm)": 3398.6,
+        "total medido (mm)": 3068.8,
+        "dias de chuva forte em comum (%)": 12.5
+      }
+    ]
+  },
+  "split": {
+    "treino": {
+      "período": "01/01/2023 a 31/12/2024",
+      "linhas": 23392,
+      "dias": 731,
+      "casos positivos": 765,
+      "prevalência": "3.27%",
+      "dias com algum alagamento": 154
+    },
+    "teste": {
+      "período": "01/01/2025 a 31/12/2025",
+      "linhas": 11680,
+      "dias": 365,
+      "casos positivos": 339,
+      "prevalência": "2.90%",
+      "dias com algum alagamento": 79
+    }
+  },
+  "comparacao_modelos": {
+    "PR-AUC (média das dobras)": {
+      "Naive Bayes": 0.183848,
+      "Regressão Logística": 0.217779,
+      "Random Forest": 0.181763,
+      "XGBoost": 0.199094,
+      "MLP": 0.200598
+    },
+    "diferença para o melhor": {
+      "Naive Bayes": 0.033931,
+      "Regressão Logística": 0.0,
+      "Random Forest": 0.036016,
+      "XGBoost": 0.018685,
+      "MLP": 0.017181
+    },
+    "erro-padrão da diferença": {
+      "Naive Bayes": 0.010766,
+      "Regressão Logística": 0.0,
+      "Random Forest": 0.019913,
+      "XGBoost": 0.010071,
+      "MLP": 0.005509
+    },
+    "equivalente ao melhor": {
+      "Naive Bayes": false,
+      "Regressão Logística": true,
+      "Random Forest": false,
+      "XGBoost": false,
+      "MLP": false
+    }
+  },
+  "comparacao_modelos_final": {
+    "PR-AUC (média das dobras)": {
+      "Naive Bayes": 0.178176,
+      "Regressão Logística": 0.218224,
+      "Random Forest": 0.185645,
+      "XGBoost": 0.208484,
+      "MLP": 0.204028
+    },
+    "diferença para o melhor": {
+      "Naive Bayes": 0.040048,
+      "Regressão Logística": 0.0,
+      "Random Forest": 0.032579,
+      "XGBoost": 0.009741,
+      "MLP": 0.014196
+    },
+    "erro-padrão da diferença": {
+      "Naive Bayes": 0.011269,
+      "Regressão Logística": 0.0,
+      "Random Forest": 0.03164,
+      "XGBoost": 0.009974,
+      "MLP": 0.011085
+    },
+    "equivalente ao melhor": {
+      "Naive Bayes": false,
+      "Regressão Logística": true,
+      "Random Forest": false,
+      "XGBoost": true,
+      "MLP": false
+    }
+  },
+  "configs_finais": {
+    "Naive Bayes": {
+      "var_smoothing": 0.001
+    },
+    "Regressão Logística": {
+      "C": 10,
+      "l1_ratio": 1.0
+    },
+    "Random Forest": {
+      "max_depth": 12,
+      "min_samples_leaf": 5
+    },
+    "XGBoost": {
+      "learning_rate": 0.1,
+      "max_depth": 1,
+      "n_estimators": 400
+    },
+    "MLP": {
+      "alpha": 0.01,
+      "hidden_layer_sizes": [
+        16
+      ]
+    }
+  },
+  "melhores_configs": {
+    "Naive Bayes": {
+      "var_smoothing": 0.001
+    },
+    "Regressão Logística": {
+      "C": 100,
+      "l1_ratio": 1.0
+    },
+    "Random Forest": {
+      "max_depth": 12,
+      "min_samples_leaf": 5
+    },
+    "XGBoost": {
+      "learning_rate": 0.1,
+      "max_depth": 2,
+      "n_estimators": 200
+    },
+    "MLP": {
+      "alpha": 0.01,
+      "hidden_layer_sizes": [
+        32
+      ]
+    }
+  },
+  "familia_escolhida": "Regressão Logística",
+  "comparacao_conjuntos": {
+    "colunas de entrada": {
+      "Só a previsão, sem o local": 2,
+      "Previsão + subprefeitura": 3,
+      "+ estação chuvosa (outubro a março)": 4,
+      "+ mês": 4,
+      "+ histórico recente do CGE": 5,
+      "Previsão + atributos físicos, sem a identidade do local": 5,
+      "+ chuva medida até a véspera (INMET)": 9,
+      "+ reanálise até a véspera e solo": 8,
+      "+ efeito de chuva próprio de cada subprefeitura": 3
+    },
+    "PR-AUC (média das dobras)": {
+      "Só a previsão, sem o local": 0.099266,
+      "Previsão + subprefeitura": 0.214261,
+      "+ estação chuvosa (outubro a março)": 0.217691,
+      "+ mês": 0.155394,
+      "+ histórico recente do CGE": 0.210981,
+      "Previsão + atributos físicos, sem a identidade do local": 0.176098,
+      "+ chuva medida até a véspera (INMET)": 0.218965,
+      "+ reanálise até a véspera e solo": 0.186507,
+      "+ efeito de chuva próprio de cada subprefeitura": 0.204737
+    },
+    "diferença para o melhor": {
+      "Só a previsão, sem o local": 0.119699,
+      "Previsão + subprefeitura": 0.004704,
+      "+ estação chuvosa (outubro a março)": 0.001274,
+      "+ mês": 0.063572,
+      "+ histórico recente do CGE": 0.007984,
+      "Previsão + atributos físicos, sem a identidade do local": 0.042867,
+      "+ chuva medida até a véspera (INMET)": 0.0,
+      "+ reanálise até a véspera e solo": 0.032458,
+      "+ efeito de chuva próprio de cada subprefeitura": 0.014229
+    },
+    "erro-padrão da diferença": {
+      "Só a previsão, sem o local": 0.032805,
+      "Previsão + subprefeitura": 0.008926,
+      "+ estação chuvosa (outubro a março)": 0.012682,
+      "+ mês": 0.031545,
+      "+ histórico recente do CGE": 0.012397,
+      "Previsão + atributos físicos, sem a identidade do local": 0.011697,
+      "+ chuva medida até a véspera (INMET)": 0.0,
+      "+ reanálise até a véspera e solo": 0.018356,
+      "+ efeito de chuva próprio de cada subprefeitura": 0.007009
+    },
+    "equivalente ao melhor": {
+      "Só a previsão, sem o local": false,
+      "Previsão + subprefeitura": true,
+      "+ estação chuvosa (outubro a março)": true,
+      "+ mês": false,
+      "+ histórico recente do CGE": true,
+      "Previsão + atributos físicos, sem a identidade do local": false,
+      "+ chuva medida até a véspera (INMET)": true,
+      "+ reanálise até a véspera e solo": false,
+      "+ efeito de chuva próprio de cada subprefeitura": false
+    }
+  },
+  "conjunto_final": "Previsão + subprefeitura",
+  "busca": {
+    "combinacoes": 24,
+    "hiperparametros": [
+      "clf__C",
+      "clf__l1_ratio",
+      "clf__class_weight"
+    ],
+    "dobras": 5,
+    "ajustes": 120,
+    "escolhida": {
+      "C": 1.0,
+      "l1_ratio": 1.0,
+      "class_weight": null
+    },
+    "n_variaveis": 3,
+    "variaveis": [
+      "prev_chuva",
+      "prev_max_bloco",
+      "subprefeitura"
+    ],
+    "pr_auc_treino_cv": 0.2963480938593321,
+    "pr_auc_validacao_cv": 0.2173196825124551,
+    "melhor_pr_auc_validacao": 0.21822419985133243,
+    "melhor_C": 10.0,
+    "melhor_penalizacao": "L1",
+    "melhor_class_weight": "sem peso",
+    "equivalentes": 6,
+    "positivos_dobras": [
+      17,
+      137,
+      197,
+      13,
+      138
+    ],
+    "diferenca_para_melhor": 0.0009045173388773919,
+    "erro_padrao_diferenca": 0.0008119322105147713
+  },
+  "limiares": {
+    "medio": 0.03070523278601103,
+    "alto": 0.10655522917707516
+  },
+  "compromisso": {
+    "limiar": {
+      "60%": 0.0791,
+      "70%": 0.0542,
+      "80%": 0.0307,
+      "90%": 0.0177
+    },
+    "% das linhas em atenção": {
+      "60%": 10.1343,
+      "70%": 13.905,
+      "80%": 21.9886,
+      "90%": 34.4938
+    },
+    "precisão (%)": {
+      "60%": 15.3925,
+      "70%": 13.0758,
+      "80%": 9.4433,
+      "90%": 6.7685
+    },
+    "dias por ano em cada subprefeitura": {
+      "60%": 36.9902,
+      "70%": 50.7531,
+      "80%": 80.2585,
+      "90%": 125.9024
+    }
+  },
+  "metricas_medio": {
+    "Treino": {
+      "ROC-AUC": 0.884929,
+      "PR-AUC": 0.245243,
+      "Brier": 0.027543,
+      "Precisão": 0.121418,
+      "Recall": 0.819608,
+      "F1": 0.211503,
+      "Especificidade": 0.799487,
+      "Prevalência": 0.032703
+    },
+    "Validação (CV, fora da amostra)": {
+      "ROC-AUC": 0.874619,
+      "PR-AUC": 0.190466,
+      "Brier": 0.023025,
+      "Precisão": 0.094433,
+      "Recall": 0.800797,
+      "F1": 0.168943,
+      "Especificidade": 0.795577,
+      "Prevalência": 0.02593
+    },
+    "Teste (2025)": {
+      "ROC-AUC": 0.860038,
+      "PR-AUC": 0.176225,
+      "Brier": 0.025732,
+      "Precisão": 0.10877,
+      "Recall": 0.746313,
+      "F1": 0.189869,
+      "Especificidade": 0.817212,
+      "Prevalência": 0.029024
+    }
+  },
+  "metricas_alto": {
+    "Treino": {
+      "ROC-AUC": 0.884929,
+      "PR-AUC": 0.245243,
+      "Brier": 0.027543,
+      "Precisão": 0.209703,
+      "Recall": 0.52549,
+      "F1": 0.299776,
+      "Especificidade": 0.933045,
+      "Prevalência": 0.032703
+    },
+    "Validação (CV, fora da amostra)": {
+      "ROC-AUC": 0.874619,
+      "PR-AUC": 0.190466,
+      "Brier": 0.023025,
+      "Precisão": 0.179115,
+      "Recall": 0.515936,
+      "F1": 0.265914,
+      "Especificidade": 0.937056,
+      "Prevalência": 0.02593
+    },
+    "Teste (2025)": {
+      "ROC-AUC": 0.860038,
+      "PR-AUC": 0.176225,
+      "Brier": 0.025732,
+      "Precisão": 0.191576,
+      "Recall": 0.415929,
+      "F1": 0.262326,
+      "Especificidade": 0.947535,
+      "Prevalência": 0.029024
+    }
+  },
+  "overfitting": {
+    "queda_cv": 0.2666742691599343,
+    "classe_cv": "moderado",
+    "queda_teste": 0.2814238884339081,
+    "classe_teste": "moderado",
+    "lift_treino": 7.498972193919805,
+    "lift_oof": 7.345467902859375,
+    "lift_teste": 6.071720103349257
+  },
+  "referencias_teste": {
+    "PR-AUC": {
+      "Modelo final": 0.176225,
+      "Só a previsão, sem o local": 0.111603,
+      "Só o local, sem a previsão": 0.058009,
+      "Frequência por subprefeitura e mês": 0.107385,
+      "XGBoost (melhor da seção 7.4)": 0.17346
+    },
+    "PR-AUC IC95% inferior": {
+      "Modelo final": 0.120123,
+      "Só a previsão, sem o local": 0.076445,
+      "Só o local, sem a previsão": 0.042316,
+      "Frequência por subprefeitura e mês": 0.070802,
+      "XGBoost (melhor da seção 7.4)": 0.116662
+    },
+    "PR-AUC IC95% superior": {
+      "Modelo final": 0.252066,
+      "Só a previsão, sem o local": 0.167613,
+      "Só o local, sem a previsão": 0.075027,
+      "Frequência por subprefeitura e mês": 0.150627,
+      "XGBoost (melhor da seção 7.4)": 0.246209
+    },
+    "ROC-AUC": {
+      "Modelo final": 0.860038,
+      "Só a previsão, sem o local": 0.815717,
+      "Só o local, sem a previsão": 0.707393,
+      "Frequência por subprefeitura e mês": 0.776324,
+      "XGBoost (melhor da seção 7.4)": 0.856788
+    },
+    "ROC-AUC IC95% inferior": {
+      "Modelo final": 0.825014,
+      "Só a previsão, sem o local": 0.766295,
+      "Só o local, sem a previsão": 0.687011,
+      "Frequência por subprefeitura e mês": 0.733393,
+      "XGBoost (melhor da seção 7.4)": 0.815774
+    },
+    "ROC-AUC IC95% superior": {
+      "Modelo final": 0.895709,
+      "Só a previsão, sem o local": 0.863299,
+      "Só o local, sem a previsão": 0.726734,
+      "Frequência por subprefeitura e mês": 0.812374,
+      "XGBoost (melhor da seção 7.4)": 0.895295
+    },
+    "modelo final - este (PR-AUC), IC95% inferior": {
+      "Modelo final": NaN,
+      "Só a previsão, sem o local": 0.040819,
+      "Só o local, sem a previsão": 0.069376,
+      "Frequência por subprefeitura e mês": 0.010103,
+      "XGBoost (melhor da seção 7.4)": -0.017808
+    },
+    "modelo final - este (PR-AUC), IC95% superior": {
+      "Modelo final": NaN,
+      "Só a previsão, sem o local": 0.093125,
+      "Só o local, sem a previsão": 0.19229,
+      "Frequência por subprefeitura e mês": 0.146727,
+      "XGBoost (melhor da seção 7.4)": 0.026538
+    }
+  },
+  "dias_com_chuva": {
+    "Treino": {
+      "linhas": 8544.0,
+      "PR-AUC": 0.284138,
+      "ROC-AUC": 0.781377,
+      "prevalência": 0.087313
+    },
+    "Teste (2025)": {
+      "linhas": 3936.0,
+      "PR-AUC": 0.210384,
+      "ROC-AUC": 0.753301,
+      "prevalência": 0.083333
+    },
+    "Só a previsão, sem o local (teste)": {
+      "linhas": 3936.0,
+      "PR-AUC": 0.132537,
+      "ROC-AUC": 0.642272,
+      "prevalência": 0.083333
+    }
+  },
+  "probabilidade_media": {
+    "prevista_teste": 0.027076098562074945,
+    "real_teste": 0.029023972602739725
+  },
+  "niveis": {
+    "teste": {
+      "% das linhas": {
+        "baixo": 80.0856,
+        "médio": 13.613,
+        "alto": 6.3014
+      },
+      "probabilidade média prevista (%)": {
+        "baixo": 0.8741,
+        "médio": 5.7079,
+        "alto": 19.5289
+      },
+      "% com alagamento registrado": {
+        "baixo": 0.9194,
+        "médio": 7.044,
+        "alto": 19.1576
+      },
+      "% dos alagamentos": {
+        "baixo": 25.3687,
+        "médio": 33.0383,
+        "alto": 41.5929
+      },
+      "linhas": {
+        "baixo": 9354,
+        "médio": 1590,
+        "alto": 736
+      },
+      "alagamentos": {
+        "baixo": 86,
+        "médio": 112,
+        "alto": 141
+      }
+    },
+    "validacao": {
+      "% das linhas": {
+        "baixo": 78.0114,
+        "médio": 14.5196,
+        "alto": 7.469
+      },
+      "probabilidade média prevista (%)": {
+        "baixo": 0.9215,
+        "médio": 5.6285,
+        "alto": 21.1999
+      },
+      "% com alagamento registrado": {
+        "baixo": 0.6621,
+        "médio": 5.0872,
+        "alto": 17.9115
+      },
+      "% dos alagamentos": {
+        "baixo": 19.9203,
+        "médio": 28.4861,
+        "alto": 51.5936
+      },
+      "linhas": {
+        "baixo": 15103,
+        "médio": 2811,
+        "alto": 1446
+      },
+      "alagamentos": {
+        "baixo": 100,
+        "médio": 143,
+        "alto": 259
+      }
+    }
+  },
+  "chuva_medida": {
+    "limiar_medio": 0.06673359875379904,
+    "limiar_alto": 0.19162051516958825,
+    "recall_alto": 0.45427728613569324,
+    "recall_alto_final": 0.415929203539823,
+    "dias_atencao": 35.46875,
+    "cobertura_atencao_pct": 75.51622418879056
+  },
+  "quadro_final": {
+    "Treino": {
+      "ROC-AUC": 0.884929,
+      "PR-AUC": 0.245243,
+      "Brier": 0.027543,
+      "Precisão": 0.121418,
+      "Recall": 0.819608,
+      "F1": 0.211503,
+      "Especificidade": 0.799487,
+      "Prevalência": 0.032703
+    },
+    "Validação (CV)": {
+      "ROC-AUC": 0.874619,
+      "PR-AUC": 0.190466,
+      "Brier": 0.023025,
+      "Precisão": 0.094433,
+      "Recall": 0.800797,
+      "F1": 0.168943,
+      "Especificidade": 0.795577,
+      "Prevalência": 0.02593
+    },
+    "Teste 2025": {
+      "ROC-AUC": 0.860038,
+      "PR-AUC": 0.176225,
+      "Brier": 0.025732,
+      "Precisão": 0.10877,
+      "Recall": 0.746313,
+      "F1": 0.189869,
+      "Especificidade": 0.817212,
+      "Prevalência": 0.029024
+    },
+    "Teste 2025, com a chuva medida": {
+      "ROC-AUC": 0.928903,
+      "PR-AUC": 0.33785,
+      "Brier": 0.022766,
+      "Precisão": 0.225551,
+      "Recall": 0.755162,
+      "F1": 0.347354,
+      "Especificidade": 0.922494,
+      "Prevalência": 0.029024
+    }
+  },
+  "coeficientes_previsao": {
+    "prev_chuva": 1.4444,
+    "prev_max_bloco": -0.2827
+  },
+  "importancia_grupos": {
+    "Subprefeitura": 0.08895,
+    "Previsão do dia": 0.128237
+  },
+  "por_regiao": {
+    "linhas": {
+      "Leste": 4380.0,
+      "Norte": 2555.0,
+      "Oeste": 1095.0,
+      "Sul": 3285.0,
+      "Centro": 365.0
+    },
+    "alagamentos": {
+      "Leste": 110.0,
+      "Norte": 70.0,
+      "Oeste": 69.0,
+      "Sul": 56.0,
+      "Centro": 34.0
+    },
+    "% com alagamento": {
+      "Leste": 2.5114,
+      "Norte": 2.7397,
+      "Oeste": 6.3014,
+      "Sul": 1.7047,
+      "Centro": 9.3151
+    },
+    "% dos dias em atenção": {
+      "Leste": 18.9041,
+      "Norte": 16.7906,
+      "Oeste": 36.895,
+      "Sul": 15.0685,
+      "Centro": 46.5753
+    },
+    "recall (médio ou alto)": {
+      "Leste": 66.3636,
+      "Norte": 62.8571,
+      "Oeste": 85.5072,
+      "Sul": 80.3571,
+      "Centro": 94.1176
+    },
+    "precisão (médio ou alto)": {
+      "Leste": 8.8164,
+      "Norte": 10.2564,
+      "Oeste": 14.604,
+      "Sul": 9.0909,
+      "Centro": 18.8235
+    }
+  },
+  "correlacao_vies": 0.8767809730396786,
+  "sem_local": {
+    "pr_auc": 0.11160292198945848,
+    "roc_auc": 0.815717321884545,
+    "tabela": {
+      "alagamentos": {
+        "Leste": 110,
+        "Norte": 70,
+        "Oeste": 69,
+        "Sul": 56,
+        "Centro": 34
+      },
+      "% dos dias em atenção (nos dois)": {
+        "Leste": 24.1096,
+        "Norte": 23.6791,
+        "Oeste": 24.1096,
+        "Sul": 25.8752,
+        "Centro": 24.1096
+      },
+      "recall sem o local": {
+        "Leste": 70.9091,
+        "Norte": 68.5714,
+        "Oeste": 72.4638,
+        "Sul": 83.9286,
+        "Centro": 70.5882
+      },
+      "IC95% inferior (sem)": {
+        "Leste": 54.5455,
+        "Norte": 50.793,
+        "Oeste": 57.738,
+        "Sul": 70.1621,
+        "Centro": 54.3433
+      },
+      "IC95% superior (sem)": {
+        "Leste": 85.2507,
+        "Norte": 86.2752,
+        "Oeste": 86.6021,
+        "Sul": 94.0058,
+        "Centro": 85.2941
+      },
+      "recall com o local": {
+        "Leste": 78.1818,
+        "Norte": 78.5714,
+        "Oeste": 71.0145,
+        "Sul": 85.7143,
+        "Centro": 70.5882
+      },
+      "IC95% inferior (com)": {
+        "Leste": 69.025,
+        "Norte": 64.0,
+        "Oeste": 56.1351,
+        "Sul": 73.3304,
+        "Centro": 54.3433
+      },
+      "IC95% superior (com)": {
+        "Leste": 87.3687,
+        "Norte": 90.6279,
+        "Oeste": 85.2459,
+        "Sul": 94.6429,
+        "Centro": 85.2941
+      }
+    }
+  },
+  "alvos_alternativos": {
+    "casos em 2025": {
+      "Qualquer ponto (alvo do modelo)": 339,
+      "Ponto de 60 minutos ou mais": 224,
+      "Ponto intransitável": 212,
+      "Ponto fora de avenida": 194,
+      "Ponto iniciado às 8h ou depois": 270
+    },
+    "prevalência (%)": {
+      "Qualquer ponto (alvo do modelo)": 2.9024,
+      "Ponto de 60 minutos ou mais": 1.9178,
+      "Ponto intransitável": 1.8151,
+      "Ponto fora de avenida": 1.661,
+      "Ponto iniciado às 8h ou depois": 2.3254
+    },
+    "PR-AUC": {
+      "Qualquer ponto (alvo do modelo)": 0.1762,
+      "Ponto de 60 minutos ou mais": 0.1338,
+      "Ponto intransitável": 0.1199,
+      "Ponto fora de avenida": 0.1127,
+      "Ponto iniciado às 8h ou depois": 0.1618
+    },
+    "ROC-AUC": {
+      "Qualquer ponto (alvo do modelo)": 0.86,
+      "Ponto de 60 minutos ou mais": 0.8668,
+      "Ponto intransitável": 0.8574,
+      "Ponto fora de avenida": 0.8617,
+      "Ponto iniciado às 8h ou depois": 0.8653
+    },
+    "% dos casos em médio ou alto": {
+      "Qualquer ponto (alvo do modelo)": 74.6313,
+      "Ponto de 60 minutos ou mais": 75.8929,
+      "Ponto intransitável": 74.5283,
+      "Ponto fora de avenida": 77.3196,
+      "Ponto iniciado às 8h ou depois": 75.5556
+    },
+    "% dos casos em alto": {
+      "Qualquer ponto (alvo do modelo)": 41.5929,
+      "Ponto de 60 minutos ou mais": 43.75,
+      "Ponto intransitável": 43.8679,
+      "Ponto fora de avenida": 42.7835,
+      "Ponto iniciado às 8h ou depois": 44.8148
+    }
+  },
+  "sensibilidade_margem": [
+    {
+      "margem": 0.0,
+      "C": 10.0,
+      "PR-AUC validação": 0.218224,
+      "PR-AUC teste": 0.175553
+    },
+    {
+      "margem": 0.002,
+      "C": 1.0,
+      "PR-AUC validação": 0.21732,
+      "PR-AUC teste": 0.176225
+    },
+    {
+      "margem": 0.005,
+      "C": 1.0,
+      "PR-AUC validação": 0.21732,
+      "PR-AUC teste": 0.176225
+    },
+    {
+      "margem": 0.01,
+      "C": 1.0,
+      "PR-AUC validação": 0.21732,
+      "PR-AUC teste": 0.176225
+    }
+  ],
+  "medidas_previsao": {
+    "PR-AUC (média das dobras)": {
+      "Só o total do dia": 0.201165,
+      "Total e intensidade do bloco mais chuvoso": 0.214261,
+      "Total, intensidade e horas com chuva": 0.212384
+    },
+    "diferença para o melhor": {
+      "Só o total do dia": 0.013097,
+      "Total e intensidade do bloco mais chuvoso": 0.0,
+      "Total, intensidade e horas com chuva": 0.001877
+    },
+    "erro-padrão da diferença": {
+      "Só o total do dia": 0.007439,
+      "Total e intensidade do bloco mais chuvoso": 0.0,
+      "Total, intensidade e horas com chuva": 0.001946
+    },
+    "equivalente ao melhor": {
+      "Só o total do dia": false,
+      "Total e intensidade do bloco mais chuvoso": true,
+      "Total, intensidade e horas com chuva": true
+    }
+  },
+  "medida_escolhida": "Total e intensidade do bloco mais chuvoso",
+  "prev_dia": [
+    "prev_chuva",
+    "prev_max_bloco"
+  ],
+  "cauda_alta": {
+    "casos": 95,
+    "prevista": 0.3860209783967041,
+    "real": 0.2736842105263158
+  },
+  "registros": {
+    "subprefeituras": {
+      "até 15 casos no treino": 16,
+      "de 16 a 40": 8,
+      "mais de 40": 8
+    },
+    "alagamentos em 2025": {
+      "até 15 casos no treino": 75,
+      "de 16 a 40": 98,
+      "mais de 40": 166
+    },
+    "% cobertos em médio ou alto": {
+      "até 15 casos no treino": 48.0,
+      "de 16 a 40": 72.449,
+      "mais de 40": 87.9518
+    },
+    "% cobertos em alto": {
+      "até 15 casos no treino": 14.6667,
+      "de 16 a 40": 29.5918,
+      "mais de 40": 60.8434
+    },
+    "dias em atenção por subprefeitura": {
+      "até 15 casos no treino": 28.6875,
+      "de 16 a 40": 88.375,
+      "mais de 40": 145.0
+    },
+    "precisão em atenção (%)": {
+      "até 15 casos no treino": 7.8431,
+      "de 16 a 40": 10.0424,
+      "mais de 40": 12.5862
+    },
+    "% cobertos com o piso": {
+      "até 15 casos no treino": 77.3333,
+      "de 16 a 40": 76.5306,
+      "mais de 40": 87.9518
+    },
+    "dias em atenção com o piso": {
+      "até 15 casos no treino": 90.9375,
+      "de 16 a 40": 96.625,
+      "mais de 40": 145.0
+    },
+    "precisão com o piso (%)": {
+      "até 15 casos no treino": 3.9863,
+      "de 16 a 40": 9.7025,
+      "mais de 40": 12.5862
+    }
+  },
+  "sem_alto": {
+    "subprefeituras": 8,
+    "casos": 13
+  },
+  "sem_atencao": {
+    "nomes": [
+      "Guaianases"
+    ],
+    "casos": 4
+  },
+  "dentro_do_dia": {
+    "correlacao_media": 0.9735409509985592,
+    "auc_modelo": 0.7613426779786057,
+    "auc_lista": 0.7685970736505594,
+    "subs_mesma_previsao": 27
+  },
+  "antes_8h": {
+    "casos": 69,
+    "pct": 0.20353982300884957
+  },
+  "caso_jardim_pantanal": {
+    "dias_com_registro": 5,
+    "medio_ou_alto_previsao": 2,
+    "alto_previsao": 1,
+    "medio_ou_alto_medida": 3
+  },
+  "cidadao": {
+    "dias_atencao_por_sub": 72.6875,
+    "dias_alto_por_sub": 23.0,
+    "cobertura_atencao_pct": 74.63126843657817,
+    "cobertura_alto_pct": 41.5929203539823,
+    "taxa_alto_pct": 19.157608695652172,
+    "dias_atencao_min": {
+      "subprefeitura": "Guaianases",
+      "dias": 0
+    },
+    "dias_atencao_max": {
+      "subprefeitura": "Sé",
+      "dias": 170
+    }
+  },
+  "versoes": {
+    "python": "3.11.9",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "scikit_learn": "1.8.0",
+    "xgboost": "3.2.0"
+  }
+}

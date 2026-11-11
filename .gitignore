@@ -1,0 +1,9 @@
+# Enunciados e escopo em PDF ficam fora da entrega
+*.pdf
+
+# Python e Jupyter
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
